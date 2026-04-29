@@ -1,5 +1,5 @@
 INHERIT: mkdocs.yml
 
-site_url: https://andresTabiTuwien.github.io/dmp_evaluation_service_web_site/
+site_url: https://OSTrails.github.io/dmp_evaluation_service_web_site/
 extra:
   api_base_url: "https://ostrails-dmp-evaluation.arisnet.ac.at"   # 👈 PRODUCTION API
