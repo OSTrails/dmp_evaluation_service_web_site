@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://example.com/</loc>
+         <loc>https://OSTrails.github.io/dmp_evaluation_service_web_site/</loc>
          <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://example.com/api/</loc>
+         <loc>https://OSTrails.github.io/dmp_evaluation_service_web_site/api/</loc>
          <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://example.com/evaluate/</loc>
+         <loc>https://OSTrails.github.io/dmp_evaluation_service_web_site/evaluate/</loc>
          <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://example.com/status/</loc>
+         <loc>https://OSTrails.github.io/dmp_evaluation_service_web_site/status/</loc>
          <lastmod>2026-04-29</lastmod>
     </url>
 </urlset>
