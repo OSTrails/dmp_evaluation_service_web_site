@@ -1,0 +1,450 @@
+#evaluate-status .ok,
+#health-status .ok {
+  font-weight: 600;
+}
+
+#evaluate-status .err,
+#health-status .err {
+  color: var(--md-code-hl-number-color);
+  font-weight: 600;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.card {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.75rem;
+  padding: 1rem;
+}
+
+#benchmark-select {
+  max-width: 100%;
+}
+
+.cards.compact .card {
+  padding: .75rem;
+}
+
+.tab-tools {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin: .25rem 0 .5rem 0;
+}
+
+.card.clickable {
+  cursor: pointer;
+  transition: transform .05s ease, background-color .2s ease;
+}
+
+.card.clickable:hover {
+  transform: translateY(-1px);
+}
+
+.card-header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: .75rem;
+}
+
+.card-title {
+  margin: 0 0 .25rem 0;
+}
+
+.card-meta {
+  margin: 0;
+  font-size: .9rem;
+}
+
+.card-caret {
+  user-select: none;
+  font-size: 1.1rem;
+  line-height: 1;
+  transform: rotate(-90deg);
+  /* closed */
+  transition: transform .15s ease;
+  opacity: .7;
+}
+
+.card.open .card-caret {
+  transform: rotate(0deg);
+  /* open */
+  opacity: 1;
+}
+
+.card-body {
+  display: none;
+  margin-top: .5rem;
+}
+
+.card.open .card-body {
+  display: block;
+}
+
+
+
+
+/* Badges */
+.badge {
+  display: inline-block;
+  font-size: .75rem;
+  line-height: 1;
+  padding: .25rem .5rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: .5rem;
+  font-weight: 600;
+  margin-right: .4rem;
+  margin-bottom: .25rem;
+}
+
+.badge--ok {
+  border-color: var(--md-typeset-color);
+}
+
+.badge--warn {
+  border-color: var(--md-code-hl-number-color);
+}
+
+.badge--muted {
+  opacity: .8;
+}
+
+/* Chips */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem .5rem;
+  margin-top: .25rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  padding: .25rem .5rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 999px;
+  font-size: .8rem;
+  text-decoration: none;
+}
+
+.chip code {
+  font-size: .75rem;
+}
+
+.chip:hover {
+  filter: brightness(1.05);
+}
+
+
+/* Tables */
+/* Toolbar */
+.table-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin: .5rem 0;
+}
+
+.table-toolbar .table-search {
+  padding: .35rem .5rem;
+  width: min(280px, 60%);
+}
+
+/* Table base */
+.nice-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.nice-table th,
+.nice-table td {
+  padding: .5rem .6rem;
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+  vertical-align: top;
+}
+
+.nice-table th {
+  user-select: none;
+}
+
+/* Header — use palette, sticky, subtle shadow (no duplicate header rule below!) */
+.nice-table thead th {
+  background-color: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+  font-weight: 600;
+  text-align: left;
+  padding: .6rem .8rem;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  border-bottom: 2px solid var(--md-default-fg-color--lightest);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .15);
+}
+
+.nice-table thead th:first-child {
+  border-top-left-radius: .5rem;
+}
+
+.nice-table thead th:last-child {
+  border-top-right-radius: .5rem;
+}
+
+/* Sortable header hover (optional) */
+.nice-table thead th[style*="cursor: pointer"] {
+  transition: background-color .2s ease;
+}
+
+.nice-table thead th[style*="cursor: pointer"]:hover {
+  background-color: color-mix(in srgb, var(--md-primary-fg-color) 85%, black);
+}
+
+/* Row hover — tint with accent color for better feedback */
+.nice-table tbody tr:hover {
+  background: color-mix(in srgb, var(--md-accent-fg-color) 14%, transparent);
+}
+
+/* Wrap long description text nicely */
+.nice-table td .wrap-text {
+  white-space: normal;
+  /* allow line breaks */
+  word-break: break-word;
+  /* break long words if needed */
+  max-width: 50ch;
+  /* keeps column tidy; tweak as you like */
+}
+
+/* Badges & cards (you already have similar; keep or merge) */
+.badge {
+  display: inline-block;
+  font-size: .75rem;
+  line-height: 1;
+  padding: .25rem .5rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: .5rem;
+  font-weight: 600;
+  margin-right: .4rem;
+  margin-bottom: .25rem;
+}
+
+.badge--ok {
+  border-color: var(--md-typeset-color);
+}
+
+.badge--warn {
+  border-color: var(--md-code-hl-number-color);
+}
+
+.badge--muted {
+  opacity: .8;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: .75rem;
+  padding: 1rem;
+}
+
+.card.clickable {
+  cursor: pointer;
+  transition: transform .05s ease;
+}
+
+.card.clickable:hover {
+  transform: translateY(-1px);
+}
+
+.card-header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: .75rem;
+}
+
+.card-title {
+  margin: 0 0 .25rem 0;
+}
+
+.card-meta {
+  margin: 0;
+  font-size: .9rem;
+}
+
+.card-caret {
+  user-select: none;
+  font-size: 1.1rem;
+  line-height: 1;
+  transform: rotate(-90deg);
+  transition: transform .15s ease;
+  opacity: .7;
+}
+
+.card.open .card-caret {
+  transform: rotate(0deg);
+  opacity: 1;
+}
+
+.card-body {
+  display: none;
+  margin-top: .5rem;
+}
+
+.card.open .card-body {
+  display: block;
+}
+
+/* ── Evaluation result cards ─────────────────────────────── */
+.eval-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.eval-card {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: .75rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--md-code-bg-color);
+}
+
+.eval-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: .5rem;
+}
+
+.eval-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* Result badge (PASS / FAIL / …) */
+.eval-grade {
+  flex-shrink: 0;
+  display: inline-block;
+  padding: .25rem .75rem;
+  border-radius: .5rem;
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .05em;
+  border: 2px solid transparent;
+}
+
+.eval-grade--pass    { background: rgba(76, 175, 80, .15);  border-color: #4caf50; color: #4caf50; }
+.eval-grade--fail    { background: rgba(244, 67, 54, .15);  border-color: #f44336; color: #f44336; }
+.eval-grade--neutral { background: rgba(128, 128, 128, .1); border-color: var(--md-default-fg-color--lightest); }
+
+/* Description */
+.eval-summary {
+  margin: 0 0 1rem 0;
+  font-size: .9rem;
+  opacity: .8;
+  line-height: 1.5;
+}
+
+/* Detail table */
+.eval-details {
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+  margin-top: .25rem;
+}
+
+.eval-details summary {
+  cursor: pointer;
+  font-size: .85rem;
+  font-weight: 600;
+  opacity: .65;
+  user-select: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .6rem 0;
+}
+
+.eval-details summary::before {
+  content: '▶';
+  font-size: .6rem;
+  transition: transform .15s ease;
+}
+
+.eval-details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.eval-details[open] .eval-detail-table {
+  padding-top: .25rem;
+}
+
+.eval-detail-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .85rem;
+}
+
+.eval-detail-table tr + tr td,
+.eval-detail-table tr + tr th {
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.eval-detail-key {
+  font-weight: 600;
+  opacity: .6;
+  white-space: nowrap;
+  padding: .35rem .75rem .35rem 0;
+  vertical-align: top;
+  width: 11rem;
+}
+
+.eval-detail-val {
+  padding: .35rem 0;
+  vertical-align: top;
+  word-break: break-word;
+  line-height: 1.5;
+}
+
+.eval-empty {
+  opacity: .5;
+  font-style: italic;
+}
+
+.eval-json-details {
+  margin-top: 1rem;
+}
+
+.eval-json-details summary {
+  cursor: pointer;
+  font-size: .85rem;
+  font-weight: 600;
+  opacity: .55;
+  user-select: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+}
+
+.eval-json-details summary::before {
+  content: '▶';
+  font-size: .6rem;
+  transition: transform .15s ease;
+}
+
+.eval-json-details[open] summary::before {
+  transform: rotate(90deg);
+}
