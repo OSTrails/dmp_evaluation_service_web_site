@@ -6,7 +6,7 @@ window.API_BASE = base;
 window.ENDPOINTS = Object.freeze({
   LIST_BENCHMARKS:  `${window.API_BASE}/benchmarks/list`,
   LIST_METRICS:     `${window.API_BASE}/metrics/list`,
-  LIST_TESTS:       `${window.API_BASE}/tests/info`,
+  LIST_TESTS:       `${window.API_BASE}/tests/list`,
   ASSESS_BENCHMARK: `${window.API_BASE}/assess/benchmark`,
   ASSESS_TEST:      `${window.API_BASE}/assess/test`
 });

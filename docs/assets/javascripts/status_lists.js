@@ -48,7 +48,7 @@ async function loadMetricsList() {
     const testTitleById = Object.create(null);
     const testUrlById   = Object.create(null);
     tests.forEach(t => {
-      const id = t.id ?? t.key ?? t.slug;
+      const id = t.identifier ?? t.id ?? t.key ?? t.slug;
       if (!id) return;
       testTitleById[id] = t.title || `Test ${id}`;
       if (t.endpointURL) testUrlById[id] = t.endpointURL;
