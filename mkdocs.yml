@@ -62,10 +62,15 @@ extra_javascript:
   - assets/javascripts/benchmarks.js
   - assets/javascripts/evaluate.js
   - assets/javascripts/status_lists.js
+  - assets/javascripts/detail.js
   - assets/javascripts/main.js
 
 extra_css:
   - assets/stylesheets/extra.css
+
+# Reached from the entity tables (detail/?type=…&id=…), not from the nav
+not_in_nav: |
+  detail.md
 
 nav:
   - Home: index.md
