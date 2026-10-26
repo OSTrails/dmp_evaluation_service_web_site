@@ -37,4 +37,9 @@ async function handleResponse(resp, statusEl, resultEl, prettyRenderer) {
   return data;
 }
 
-window.Utils = { escapeHtml, handleResponse };
+// Link to the detail page of an entity (type: benchmark | metric | test)
+function entityUrl(type, id) {
+  return `${window.SITE_BASE}/detail/?type=${encodeURIComponent(type)}&id=${encodeURIComponent(id)}`;
+}
+
+window.Utils = { escapeHtml, handleResponse, entityUrl };

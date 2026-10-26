@@ -26,7 +26,7 @@
   }
 
   function dataTable(container, rows, columns, opts={}) {
-    const { searchable=true, paginated=true, pageSize=10 } = opts;
+    const { searchable=true, paginated=true, pageSize=10, rowHref=null } = opts;
     container.innerHTML = '';
 
     const top = document.createElement('div');
@@ -71,15 +71,16 @@
       if (q) {
         const needle = q.toLowerCase();
         out = rows.filter(r =>
-          columns.some(c => String((c.value?.(r)) ?? r[c.key] ?? '')
+          columns.some(c => String((c.sortValue ?? c.value)?.(r) ?? r[c.key] ?? '')
             .toLowerCase().includes(needle))
         );
       }
       if (sortKey) {
         const col = columns.find(c => c.key === sortKey);
         out = [...out].sort((a,b) => {
-          const va = (col.value ? col.value(a) : a[sortKey]) ?? '';
-          const vb = (col.value ? col.value(b) : b[sortKey]) ?? '';
+          const get = col.sortValue ?? col.value;
+          const va = (get ? get(a) : a[sortKey]) ?? '';
+          const vb = (get ? get(b) : b[sortKey]) ?? '';
           return String(va).localeCompare(String(vb), undefined, { numeric:true }) * sortDir;
         });
       }
@@ -101,6 +102,11 @@
       tbody.innerHTML = '';
       data.slice(start, end).forEach(r => {
         const tr = document.createElement('tr');
+        const href = rowHref?.(r);
+        if (href) {
+          tr.className = 'clickable-row';
+          tr.addEventListener('click', e => { if (!e.target.closest('a,button')) window.location.href = href; });
+        }
         columns.forEach(c => {
           const td = document.createElement('td');
           const val = c.value ? c.value(r) : r[c.key];

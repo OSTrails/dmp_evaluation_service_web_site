@@ -448,3 +448,29 @@
 .eval-json-details[open] summary::before {
   transform: rotate(90deg);
 }
+
+/* Entity tables: whole row opens the detail page */
+.nice-table tbody tr.clickable-row {
+  cursor: pointer;
+}
+
+/* Entity detail page */
+.entity-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .5rem;
+}
+
+.entity-meta a {
+  margin-right: .5rem;
+}
+
+.entity-description {
+  font-size: .9rem;
+  line-height: 1.6;
+}
+
+.entity-detail-table .eval-detail-key {
+  white-space: normal;
+}

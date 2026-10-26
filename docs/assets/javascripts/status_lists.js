@@ -16,11 +16,11 @@ async function loadBenchmarksList() {
     const list = await fetchList(window.ENDPOINTS.LIST_BENCHMARKS);
     const { dataTable, escapeHtml, badge } = window.Components;
     dataTable(tableEl, list, [
-      { key: 'title',       title: 'Title',       sortable: true,  value: (m) => escapeHtml(m.title || '') },
+      { key: 'title',       title: 'Title',       sortable: true,  sortValue: (m) => m.title || '', value: (m) => `<a href="${escapeHtml(entityUrl('benchmark', m.identifier))}">${escapeHtml(m.title || '')}</a>` },
       { key: 'version',     title: 'Version',     sortable: true,  value: (m) => escapeHtml(m.version || '') },
       { key: 'status',      title: 'Status',      sortable: true,  value: (m) => m.status ? badge(m.status, String(m.status).toUpperCase() === 'ACTIVE' ? 'ok' : 'warn') : '' },
       { key: 'description', title: 'Description', sortable: false, value: (m) => m.description ? `<div class="wrap-text">${escapeHtml(m.description)}</div>` : '' }
-    ], { searchable: true, paginated: true, pageSize: 10 });
+    ], { searchable: true, paginated: true, pageSize: 10, rowHref: (m) => entityUrl('benchmark', m.identifier) });
     statusEl.textContent = `Found ${list.length} benchmark(s).`;
   } catch (err) {
     statusEl.innerHTML = `<span class="err">Error: ${window.Components.escapeHtml(err.message)}</span>`;
@@ -46,12 +46,10 @@ async function loadMetricsList() {
     const tests   = Array.isArray(testsRaw)   ? testsRaw   : (testsRaw.items   || testsRaw.results   || []);
 
     const testTitleById = Object.create(null);
-    const testUrlById   = Object.create(null);
     tests.forEach(t => {
       const id = t.identifier ?? t.id ?? t.key ?? t.slug;
       if (!id) return;
       testTitleById[id] = t.title || `Test ${id}`;
-      if (t.endpointURL) testUrlById[id] = t.endpointURL;
     });
 
     const { dataTable, escapeHtml, badge } = window.Components;
@@ -67,21 +65,17 @@ async function loadMetricsList() {
       return arr.map(x => {
         const id    = extractId(x);
         const title = testTitleById[id] || id;
-        const href  = testUrlById[id];
-        const label = escapeHtml(title);
-        return href
-          ? `<a class="chip" href="${escapeHtml(href)}" target="_blank" rel="noopener">${label}</a>`
-          : `<span class="chip">${label}</span>`;
+        return `<a class="chip" href="${escapeHtml(entityUrl('test', id))}">${escapeHtml(title)}</a>`;
       }).join(' ');
     };
 
     dataTable(tableEl, metrics, [
-      { key: 'title',       title: 'Title',       sortable: true,  value: (m) => escapeHtml(m.title || '') },
+      { key: 'title',       title: 'Title',       sortable: true,  sortValue: (m) => m.title || '', value: (m) => `<a href="${escapeHtml(entityUrl('metric', m.identifier))}">${escapeHtml(m.title || '')}</a>` },
       { key: 'version',     title: 'Version',     sortable: true,  value: (m) => escapeHtml(m.version || '') },
       { key: 'status',      title: 'Status',      sortable: true,  value: (m) => m.status ? badge(m.status, String(m.status).toUpperCase() === 'ACTIVE' ? 'ok' : 'warn') : '' },
       { key: 'tests',       title: 'Tests',       sortable: false, value: (m) => renderTestChips(m.testAssociated) },
       { key: 'description', title: 'Description', sortable: false, value: (m) => m.description ? `<div class="wrap-text">${escapeHtml(m.description)}</div>` : '' }
-    ], { searchable: true, paginated: true, pageSize: 10 });
+    ], { searchable: true, paginated: true, pageSize: 10, rowHref: (m) => entityUrl('metric', m.identifier) });
 
     statusEl.textContent = `Found ${metrics.length} metric(s).`;
   } catch (err) {
@@ -98,11 +92,11 @@ async function loadTestsList() {
     const list = await fetchList(window.ENDPOINTS.LIST_TESTS);
     const { dataTable, escapeHtml, badge } = window.Components;
     dataTable(tableEl, list, [
-      { key: 'title',       title: 'Title',       sortable: true,  value: (m) => escapeHtml(m.title || '') },
+      { key: 'title',       title: 'Title',       sortable: true,  sortValue: (m) => m.title || '', value: (m) => `<a href="${escapeHtml(entityUrl('test', m.identifier))}">${escapeHtml(m.title || '')}</a>` },
       { key: 'version',     title: 'Version',     sortable: true,  value: (m) => escapeHtml(m.version || '') },
       { key: 'status',      title: 'Status',      sortable: true,  value: (m) => m.status ? badge(m.status, String(m.status).toUpperCase() === 'ACTIVE' ? 'ok' : 'warn') : '' },
       { key: 'description', title: 'Description', sortable: false, value: (m) => m.description ? `<div class="wrap-text">${escapeHtml(m.description)}</div>` : '' }
-    ], { searchable: true, paginated: true, pageSize: 10 });
+    ], { searchable: true, paginated: true, pageSize: 10, rowHref: (m) => entityUrl('test', m.identifier) });
     statusEl.textContent = `Found ${list.length} test(s).`;
   } catch (err) {
     statusEl.innerHTML = `<span class="err">Error: ${window.Components.escapeHtml(err.message)}</span>`;

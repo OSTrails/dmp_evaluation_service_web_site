@@ -10,4 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (document.getElementById('benchmarks-table')) StatusLists.loadBenchmarksList();
   if (document.getElementById('metrics-table'))    StatusLists.loadMetricsList();
   if (document.getElementById('tests-table'))      StatusLists.loadTestsList();
+
+  // Entity detail page
+  if (document.getElementById('entity-detail'))    EntityDetail.loadEntityDetail();
 });
