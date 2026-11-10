@@ -7,7 +7,7 @@ Pick what you want to evaluate.
 
 === "Benchmark"
 Select a benchmark and upload your **maDMP**.  
-This posts **multipart/form-data** to: `{{ config.extra.api_base_url }}/assess/benchmark`.
+This posts **multipart/form-data** to: <code class="api-url" data-path="/assess/benchmark">/assess/benchmark</code>.
 
 <form id="form-evaluate-benchmark">
   <label>
@@ -40,7 +40,7 @@ This posts **multipart/form-data** to: `{{ config.extra.api_base_url }}/assess/b
 ## Evaluate a test
 === "Test"
 Select a **test** and upload your **maDMP**.  
-This will post to: `{{ config.extra.api_base_url }}/assess/test`.
+This will post to: <code class="api-url" data-path="/assess/test">/assess/test</code>.
 
 <form id="form-evaluate-test">
   <label>

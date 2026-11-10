@@ -14,3 +14,15 @@ window.ENDPOINTS = Object.freeze({
   ASSESS_BENCHMARK: `${window.API_BASE}/assess/benchmark`,
   ASSESS_TEST:      `${window.API_BASE}/assess/test`
 });
+
+// Markdown pages can't use {{ config.extra.* }}, so show the API URL from here
+function fillApiUrls() {
+  document.querySelectorAll('.api-url[data-path]').forEach(el => {
+    el.textContent = `${window.API_BASE}${el.dataset.path}`;
+  });
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', fillApiUrls);
+} else {
+  fillApiUrls();
+}
